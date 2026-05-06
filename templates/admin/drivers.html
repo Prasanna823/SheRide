@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drivers</title>
+</head>
+<body>
+
+<h2>Driver Approvals</h2>
+
+<table border="1">
+<tr>
+    <th>Name</th>
+    <th>Mobile</th>
+    <th>ID Proof</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for d in drivers %}
+<tr>
+    <td>{{ d[1] }}</td>
+    <td>{{ d[4] }}</td>
+    <td><a href="/{{ d[5] }}">View</a></td>
+    <td>{{ d[6] }}</td>
+    <td>
+        {% if d[6] == 'pending' %}
+        <a href="/admin/approve/{{ d[0] }}">Approve</a>
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

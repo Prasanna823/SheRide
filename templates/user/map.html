@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SheRide - Live Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        #map {
+            height: 300px;
+            width: 90%;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        .card {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+            border: none;
+            border-radius: 5px;
+            background: purple;
+            color: white;
+            cursor: pointer;
+        }
+
+        .sos {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📍 Live Ride Tracking</h2>
+
+<!-- MAP -->
+<div id="map"></div>
+
+<!-- STATUS CARD -->
+<div class="card">
+    <h3>Status: {{ status }}</h3>
+
+    {% if driver_name %}
+        <p>👩 Driver: {{ driver_name }}</p>
+        <p>🚗 Vehicle No: {{ vehicle_no }}</p>
+    {% endif %}
+</div>
+
+<br>
+
+<!-- ACTION BUTTONS -->
+<a href="/simulate"><button>Assign Driver</button></a><br>
+<a href="/start"><button>Start Ride</button></a><br>
+<a href="/complete"><button>Complete Ride</button></a><br>
+
+<a href="/user/sos">
+    <button class="sos">🚨 SOS</button>
+</a>
+
+<!-- MAP SCRIPT -->
+<script>
+    // Default location (Hyderabad)
+    var map = L.map('map').setView([17.385044, 78.486671], 13);
+
+    // Map tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // User marker
+    var userMarker = L.marker([17.385044, 78.486671]).addTo(map)
+        .bindPopup("📍 Your Location")
+        .openPopup();
+
+    // Driver marker (appears after assignment)
+    {% if driver_name %}
+        var driverMarker = L.marker([17.395044, 78.496671]).addTo(map)
+            .bindPopup("🚗 Driver Location")
+            .openPopup();
+    {% endif %}
+</script>
+
+</body>
+</html>
