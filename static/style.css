@@ -1,82 +1,119 @@
-/* Reset */
 body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
 }
 
-/* Main container */
-.container {
-    width: 340px;
-    margin: 80px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
+
+/* TOP BAR */
+.top-bar {
+    background: #111827;
 }
 
-/* Title */
-h1 {
-    color: purple;
-    margin-bottom: 10px;
+
+/* PROFILE CIRCLE */
+.profile-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    background: #facc15;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    color: black;
 }
 
-h2 {
-    color: #333;
-}
 
-/* Inputs */
-input, select {
-    width: 92%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-/* Buttons */
-button {
-    width: 100%;
-    padding: 10px;
-    background: purple;
-    color: white;
+/* MENU BUTTON */
+.menu-btn {
+    background: transparent;
     border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    cursor: pointer;
+    color: white;
+    font-size: 24px;
+}
+
+
+/* HERO SECTION */
+.hero-section {
+    height: 85vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200&auto=format&fit=crop');
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* HERO TEXT */
+.hero-section h1 {
+    font-size: 4rem;
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+}
+
+
+/* SERVICE CARDS */
+.service-card {
+    border-radius: 20px;
     transition: 0.3s;
 }
 
-/* Button hover */
-button:hover {
-    background: #5e0ca5;
+.service-card:hover {
+    transform: translateY(-10px);
 }
 
-/* Links */
-a {
-    text-decoration: none;
+
+/* SERVICE ICONS */
+.service-icon {
+    font-size: 60px;
+    color: purple;
 }
 
-/* Small text */
-p {
-    font-size: 14px;
-    color: #555;
+
+/* SAFETY SECTION */
+.safety-section {
+    background: purple;
 }
 
-/* Section headings */
-h3 {
-    margin-top: 15px;
-    color: #444;
+
+/* SAFETY ICONS */
+.safety-icon {
+    font-size: 50px;
+    color: purple;
 }
 
-/* SOS button (optional highlight) */
-.sos {
-    background: red !important;
+
+/* BUTTONS */
+.btn-warning {
+    border-radius: 50px;
+    font-weight: bold;
 }
 
-.sos:hover {
-    background: darkred !important;
+
+/* FOOTER */
+footer {
+    margin-top: 0;
+}
+
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px) {
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
 }
