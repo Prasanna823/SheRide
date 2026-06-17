@@ -60,10 +60,9 @@
 <div class="card">
     <h3>Status: {{ status }}</h3>
 
-    {% if driver_name %}
-        <p>👩 Driver: {{ driver_name }}</p>
-        <p>🚗 Vehicle No: {{ vehicle_no }}</p>
-    {% endif %}
+    <!-- ALWAYS SHOW DRIVER DETAILS -->
+    <p>👩 Driver: {{ driver_name }}</p>
+    <p>🚗 Vehicle No: {{ vehicle_no }}</p>
 </div>
 
 <br>
@@ -92,12 +91,14 @@
         .bindPopup("📍 Your Location")
         .openPopup();
 
-    // Driver marker (appears after assignment)
-    {% if driver_name %}
+    // Driver marker (only if driver exists)
+    var driverName = "{{ driver_name }}";
+
+    if (driverName && driverName !== "None") {
         var driverMarker = L.marker([17.395044, 78.496671]).addTo(map)
             .bindPopup("🚗 Driver Location")
             .openPopup();
-    {% endif %}
+    }
 </script>
 
 </body>
